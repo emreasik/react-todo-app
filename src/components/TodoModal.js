@@ -1,15 +1,48 @@
 import React, { useState } from 'react';
-import styles from '../styles/modules/modal.module.scss';
+import { toast } from 'react-hot-toast';
 import { MdOutlineClose } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../slices/todoSlice';
 import Button from './Button';
+import styles from '../styles/modules/modal.module.scss';
+import { v4 as uuidv4 } from 'uuid';
 
 function TodoModal({ showModal, setShowModal }) {
     const [title, setTitle] = useState('');
     const [status, setStatus] = useState('incomplete');
 
+    const dispatch = useDispatch();
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({ title, status });
+        if (title && status) {
+            dispatch(
+                addTodo({
+                    id: uuidv4(),
+                    title,
+                    status,
+                    time: new Date().toLocaleString(),
+                })
+            );
+            toast.success(`Task added successfully`,
+                {
+                    style: {
+                        fontSize: '1.5rem',
+                    },
+
+                }
+            );
+            handleCloseAndReset();
+        } else {
+            toast.error(`Task title and status are required`,
+                {
+                    style: {
+                        fontSize: '1.5rem',
+                    },
+
+                }
+            );
+        }
     }
     const handleCloseAndReset = () => {
         setShowModal(false);

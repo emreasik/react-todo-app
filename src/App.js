@@ -2,6 +2,7 @@ import AppContent from './components/AppContent';
 import AppHeader from './components/AppHeader';
 import PageTitle from './components/PageTitle';
 import styles from './styles/modules/app.module.scss';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
         <AppHeader />
         <AppContent></AppContent>
       </div>
+      <Toaster
+        position="top-right"
+      />
     </div>
   );
 }
