@@ -1,0 +1,54 @@
+@use '../variables' as v;
+
+.todoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: v.$white;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &__items {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+
+        &__items {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+
+    }
+
+    &__icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        &__icon {
+            font-size: 2rem;
+            padding: 0.5rem;
+            border-radius: 4px;
+            background-color: v.$gray-1;
+            color: v.$black-2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s ease background-color;
+
+            &:hover {
+                background-color: v.$gray-2;
+            }
+        }
+    }
+}
